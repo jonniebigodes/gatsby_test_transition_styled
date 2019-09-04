@@ -37,18 +37,15 @@ const HomeButton = styled(AniLink)`
   opacity: 1;
 `;
 
-const IndexPage = () => {
+const SecondPage = () => {
   return (
     <Container>
-      <Heading>This is the index</Heading>
-      <HomeButton fade to="/page2/">
-        Go to a diferent page
-      </HomeButton>
-      <HomeButton fade to="/banana/">
-          Go to non existing page
+      <Heading>This is the second page</Heading>
+      <HomeButton fade to="/">
+        Go Back to Home
       </HomeButton>
     </Container>
   );
 };
 
-export default IndexPage;
+export default SecondPage;
