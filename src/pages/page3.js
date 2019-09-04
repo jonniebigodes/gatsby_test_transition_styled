@@ -2,12 +2,15 @@ import React from "react"
 import Loadable from "react-loadable"
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-
+// component to show something to the user while the actual component is loaded on the client side
 const loader = () => <div>Loading threejs...</div>
+//
+// a component that will be defered to be rendered only on client side.
 const MyLoadableThreejs = Loadable({
-  loader: () => import("../components/Thing.js"),
+  loader: () => import("../components/Thing.js"), // imports the component with the three.js and allows use of it safely
   loading: loader,
 })
+//
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
