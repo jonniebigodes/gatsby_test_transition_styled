@@ -1,7 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import React from "react"
+import Loadable from "react-loadable"
+import styled from "styled-components"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
+const loader = () => <div>Loading threejs...</div>
+const MyLoadableThreejs = Loadable({
+  loader: () => import("../components/Thing.js"),
+  loading: loader,
+})
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -14,7 +20,7 @@ const Container = styled.div`
   align-items: center;
   z-index: 800;
   color: white;
-`;
+`
 
 const Heading = styled.h1`
   font-family: "URWAccidalia";
@@ -22,7 +28,7 @@ const Heading = styled.h1`
   color: white;
   text-align: center;
   z-index: 805;
-`;
+`
 
 const HomeButton = styled(AniLink)`
   font-family: "URWAccidalia";
@@ -35,23 +41,13 @@ const HomeButton = styled(AniLink)`
   border: none;
   text-decoration: none;
   opacity: 1;
-`;
-
-const IndexPage = () => {
-  return (
-    <Container>
-      <Heading>This is the index</Heading>
-      <HomeButton fade to="/page2/">
-        Go to a diferent page
-      </HomeButton>
-      <HomeButton fade to="/page3/">
-        Go to a page with a canvas element
-      </HomeButton>
-      <HomeButton fade to="/banana/">
-          Go to non existing page
-      </HomeButton>
-    </Container>
-  );
-};
-
-export default IndexPage;
+`
+export default () => (
+  <Container>
+    <Heading>This is a page with three js</Heading>
+    <MyLoadableThreejs/>
+    <HomeButton fade to="/">
+      Go to a diferent page
+    </HomeButton>
+  </Container>
+)
